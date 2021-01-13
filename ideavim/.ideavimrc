@@ -129,6 +129,7 @@ nmap <leader>im      :action ImplementMethods<CR>
 nmap <leader>si      :action FileStructurePopup<CR>
 nmap <leader>cf      :action ReformatCode<CR>
 nmap <leader>rR      :action RunClass<CR>
+nmap <leader>ut      :action GotoTest<CR>
 nmap <leader>rr      :action Run<CR>
 nmap <leader>ss      :action Stop<CR>
 nmap <leader>tb      :action ToggleBookmark<CR>
