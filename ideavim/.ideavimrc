@@ -117,6 +117,8 @@ nmap <leader>cc      :action GotoClass<CR>
 nmap <leader>dD      :action DebugClass<CR>
 nmap <leader>dd      :action Debug<CR>
 nmap <leader>ee      :action ShowErrorDescription<CR>
+nmap <leader>en      :action GotoNextError<CR>
+nmap <leader>ep      :action GotoPreviousError<CR>
 nmap <leader>op      :action SelectInProjectView<CR>
 nmap <leader>o,      :action Tool_External Tools_Open in Emacs<CR>
 nmap <leader>or      :action EvaluateExpression<CR>
@@ -157,6 +159,8 @@ vmap <leader>cc      :<Backspace><Backspace><Backspace><Backspace><Backspace>act
 vmap <leader>dD      :<Backspace><Backspace><Backspace><Backspace><Backspace>action DebugClass<CR>
 vmap <leader>dd      :<Backspace><Backspace><Backspace><Backspace><Backspace>action Debug<CR>
 vmap <leader>ee      :<Backspace><Backspace><Backspace><Backspace><Backspace>action ShowErrorDescription<CR>
+vmap <leader>en      :<Backspace><Backspace><Backspace><Backspace><Backspace>action GotoNextError<CR>
+vmap <leader>ep      :<Backspace><Backspace><Backspace><Backspace><Backspace>action GotoPreviousError<CR>
 vmap <leader>op      :<Backspace><Backspace><Backspace><Backspace><Backspace>action SelectInProjectView<CR>
 vmap <leader>o,      :<Backspace><Backspace><Backspace><Backspace><Backspace>action Tool_External Tools_Open in Emacs<CR>
 vmap <leader>or      :<Backspace><Backspace><Backspace><Backspace><Backspace>action EvaluateExpression<CR>
