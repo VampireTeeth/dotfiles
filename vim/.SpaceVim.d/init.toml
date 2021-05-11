@@ -23,12 +23,20 @@
     buffer_index_type = 4
     enable_tabline_filetype_icon = true
     enable_statusline_mode = false
+    autocomplete_method = "coc"
+    bootstrap_before = "myspacevim#before"
+    bootstrap_after = "myspacevim#after"
+    
 
 # Enable autocomplete layer
+# [[layers]]
+#   name = "autocomplete"
+#   auto_completion_return_key_behavior = "complete"
+#   auto_completion_tab_key_behavior = "smart"
+#
+
 [[layers]]
-  name = "autocomplete"
-  auto_completion_return_key_behavior = "complete"
-  auto_completion_tab_key_behavior = "smart"
+  name = "coc"
 
 [[layers]]
   name = "fzf"
@@ -40,6 +48,17 @@
 
 [[layers]]
   name = "lang#python"
+
+[[layers]]
+  name = "lang#rust"
+
+[[layers]]
+  name = "lsp"
+  filetypes = [
+    "rust",
+  ]
+  [layers.override_cmd]
+  rust = ["rustup", "run", "nightly", "rls"]
 
 # [[layers]]
 #   name = "lang#kotlin"
