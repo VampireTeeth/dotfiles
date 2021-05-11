@@ -58,7 +58,8 @@
     "rust",
   ]
   [layers.override_cmd]
-  rust = ["rustup", "run", "nightly", "rls"]
+#rust = ["rustup", "run", "nightly", "rls"]
+  rust = ["rust-analyzer"]
 
 # [[layers]]
 #   name = "lang#kotlin"
