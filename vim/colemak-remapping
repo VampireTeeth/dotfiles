@@ -1,0 +1,18 @@
+" ============================================================================
+" key bindings for quickly moving between windows
+" h left, i right, e up, n down
+" ============================================================================
+
+nnoremap n j
+nnoremap e k
+nnoremap i l
+nnoremap l i
+nnoremap <S-l> I 
+nnoremap k n
+
+vnoremap n j
+vnoremap e k
+vnoremap i l
+vnoremap l i
+vnoremap <S-l> I 
+vnoremap k n
