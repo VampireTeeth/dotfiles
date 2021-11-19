@@ -4,11 +4,12 @@ set gdefault
 set smartcase
 set ideajoin
 set clipboard+=ideaput
+set nerdtree
 
 let mapleader = " "
 
 imap jk <Esc>
-set timeoutlen=1000
+set imeoutlen=1000
 
 " use system clipboard
 set clipboard+=unnamedplus,unnamed
