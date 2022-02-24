@@ -22,10 +22,12 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 15 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 15))
 
+(setq doom-font (font-spec :family "TerminessTTF Nerd Font" :size 16))
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-one)
+(setq doom-theme 'doom-badger)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -64,3 +66,6 @@
                     vc-ignore-dir-regexp
                     tramp-file-name-regexp))
 (setq tramp-verbose 1)
+
+(general-auto-unbind-keys :off)
+(remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
