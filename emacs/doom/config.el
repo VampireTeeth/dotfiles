@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Steven Liu"
-      user-mail-address "sliu2@atlassian.com")
+      user-mail-address "stevenweikeliu@canva.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -22,7 +22,6 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 15 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 15))
 
-(setq doom-font (font-spec :family "TerminessTTF Nerd Font" :size 16))
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
@@ -69,3 +68,14 @@
 
 (general-auto-unbind-keys :off)
 (remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
+
+(setq doom-font (font-spec :family "TerminessTTF Nerd Font Mono" :size 16))
+(setq shell-command-switch "-ic")
+
+(setq org-todo-keyword-faces
+      '(
+        ("TODO" . +org-todo-active)
+        ("DONE" . +org-done)))
+
+(use-package! evil-terminal-cursor-changer
+  :hook (tty-setup . evil-terminal-cursor-changer-activate))
