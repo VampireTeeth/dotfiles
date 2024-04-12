@@ -49,6 +49,13 @@ nnoremap n k
 nnoremap l n
 nnoremap L N
 
+vnoremap u i
+vnoremap s l
+vnoremap t j
+vnoremap n k
+vnoremap l n
+vnoremap L N
+
 nmap <c-g> <Esc>
 vmap <c-g> <Esc>
 imap <c-g> <Esc>a
