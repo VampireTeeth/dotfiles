@@ -42,6 +42,7 @@ vmap <del> "_d
 
 
 " Remapping for dvorak keyboard 
+
 nnoremap u i
 nnoremap s l
 nnoremap t j
@@ -56,6 +57,8 @@ vnoremap n k
 vnoremap l n
 vnoremap L N
 
+nmap <c-u> :undo<CR>
+nmap <c-r> :redo<CR>
 nmap <c-g> <Esc>
 vmap <c-g> <Esc>
 imap <c-g> <Esc>a
@@ -126,8 +129,6 @@ nmap zm :action CollapseAllRegions<CR>
 nmap <CR>            :action RecentFiles<CR>
 nmap <c-i>           :action Forward<CR>
 nmap <c-o>           :action Back<CR>
-nmap <c-u>           :action Undo<CR>
-nmap <c-r>           :action Redo<CR>
 nmap <leader>oS      :action ActivateTerminalToolWindow<CR>
 nmap <leader><Space> :action GotoAction<CR>
 nmap <leader><tab>   :action RecentFiles<CR>

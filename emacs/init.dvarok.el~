@@ -50,10 +50,10 @@
   (use-package marginalia
     :after vertico
     :ensure t
-    :init
-    (marginalia-mode)
     :custom
-    (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil)))
+    (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+    :config
+    (marginalia-mode))
 
   ;; Enable the Ace jump mode
   (use-package ace-jump-mode
