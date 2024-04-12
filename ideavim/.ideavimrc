@@ -39,6 +39,16 @@ vmap <del> "_d
 " emacs keymaping for cursor movement{{{
 " You have to unbind C-g before it works
 " ============================================================================
+
+
+" Remapping for dvorak keyboard 
+nnoremap u i
+nnoremap s l
+nnoremap t j
+nnoremap n k
+nnoremap l n
+nnoremap L N
+
 nmap <c-g> <Esc>
 vmap <c-g> <Esc>
 imap <c-g> <Esc>a
@@ -54,6 +64,7 @@ inoremap <c-f> <right>
 inoremap <c-b> <left>
 inoremap <c-p> <up>
 inoremap <c-n> <down>
+
 " command line
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
@@ -71,6 +82,7 @@ cnoremap <C-e> <End>
 " key bindings for quickly moving between windows
 " h left, l right, k up, j down
 " ============================================================================
+nmap <leader>ww <c-w>w
 nmap <leader>wh <c-w>h
 nmap <leader>wl <c-w>l
 nmap <leader>wk <c-w>k
@@ -81,6 +93,7 @@ nmap <leader>wc <c-w>c
 nmap <leader>wo :action HideAllWindows<CR>
 nmap <leader>wz :action ToggleDistractionFreeMode<CR>
 
+vmap <leader>ww <c-w>w
 vmap <leader>wh <c-w>h
 vmap <leader>wl <c-w>l
 vmap <leader>wk <c-w>k
@@ -106,6 +119,8 @@ nmap zm :action CollapseAllRegions<CR>
 nmap <CR>            :action RecentFiles<CR>
 nmap <c-i>           :action Forward<CR>
 nmap <c-o>           :action Back<CR>
+nmap <c-u>           :action Undo<CR>
+nmap <c-r>           :action Redo<CR>
 nmap <leader>oS      :action ActivateTerminalToolWindow<CR>
 nmap <leader><Space> :action GotoAction<CR>
 nmap <leader><tab>   :action RecentFiles<CR>

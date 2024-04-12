@@ -26,7 +26,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-one)
-(setq doom-theme 'doom-zenburn)
+(setq doom-theme 'doom-nord)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -77,5 +77,19 @@
         ("TODO" . +org-todo-active)
         ("DONE" . +org-done)))
 
-(use-package! evil-terminal-cursor-changer
-  :hook (tty-setup . evil-terminal-cursor-changer-activate))
+;;(use-package! evil-terminal-cursor-changer
+;;  :hook (tty-setup . evil-terminal-cursor-changer-activate))
+;;
+;;(use-package evil-org
+;;  :ensure t
+;;  :after org
+;;  :hook (org-mode . (lambda () evil-org-mode))
+;;  :config
+;;  (require 'evil-org-agenda)
+;;  (evil-org-agenda-set-keys))
+;;
+(require 'xah-fly-keys)
+(xah-fly-keys-set-layout "dvorak")
+(xah-fly-keys 1)
+
+(setq doom-leader-key "<f1>")
