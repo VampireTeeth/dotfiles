@@ -1,94 +1,93 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(eval-when-compile
-  ;; first, declare repositories
-  (setq package-archives
-	'(("gnu" . "http://elpa.gnu.org/packages/")
-          ("melpa" . "http://melpa.org/packages/")
-	  ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
-  
-  ;; Init the package facility
-  (require 'package)
-  (package-initialize)
-  (unless package-archive-contents
-    (package-refresh-contents))
+;; first, declare repositories
+(setq package-archives
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("melpa" . "http://melpa.org/packages/")
+	("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
-  (unless (package-installed-p 'use-package)
-    (package-install 'use-package))
+;; Init the package facility
+(require 'package)
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
 
-  ;; Enable evil
-  (use-package evil
-    :ensure t
-    :bind (
-	   :map evil-normal-state-map
-	   ("s" . 'evil-forward-char)
-	   ("t" . 'evil-next-line)
-	   ("n" . 'evil-previous-line)
-	   ("l" . 'evil-search-next)
-	   ("L" . 'evil-search-previous)
-	   ("u" . 'evil-insert)
-	   ("C-u" . 'evil-undo)
-	   ("i" . 'evil-undo)
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 
-	   :map evil-visual-state-map
-	   ("s" . 'evil-forward-char)
-	   ("t" . 'evil-next-line)
-	   ("n" . 'evil-previous-line)
-	   ("l" . 'evil-search-next)
-	   ("L" . 'evil-search-previous)
-	   )
-    :config
-    (evil-mode 1)) ;; End evil
+;; Enable evil
+(use-package evil
+  :ensure t
+  :bind (
+	 :map evil-normal-state-map
+	 ("s" . 'evil-forward-char)
+	 ("t" . 'evil-next-line)
+	 ("n" . 'evil-previous-line)
+	 ("l" . 'evil-search-next)
+	 ("L" . 'evil-search-previous)
+	 ("u" . 'evil-insert)
+	 ("C-u" . 'evil-undo)
+	 ("i" . 'evil-undo)
 
-  ;; Enable vertico
-  (use-package vertico
-    :ensure t
-    :config
-    (vertico-mode t))
-  
-  ;; Enable Marginalia
-  (use-package marginalia
-    :after vertico
-    :ensure t
-    :init
-    (marginalia-mode)
-    :custom
-    (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil)))
+	 :map evil-visual-state-map
+	 ("s" . 'evil-forward-char)
+	 ("t" . 'evil-next-line)
+	 ("n" . 'evil-previous-line)
+	 ("l" . 'evil-search-next)
+	 ("L" . 'evil-search-previous)
+	 )
+  :config
+  (evil-mode 1)) ;; End evil
 
-  ;; Enable the Ace jump mode
-  (use-package ace-jump-mode
-    :ensure t
-    :config
-    (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
+;; Enable vertico
+(use-package vertico
+  :ensure t
+  :config
+  (vertico-mode t))
 
-  ;; Enable company mode
-  (use-package company
-    :ensure t
-    :bind (("C-SPC" . company-search-candidates)
-	   :map company-active-map
-	   ("C-n" . company-select-previous)
-	   ("C-t" . company-select-next)
-	   :map company-search-map
-	   ("C-n" . company-select-previous)
-	   ("C-t" . company-select-next))
-    :init
-    (global-company-mode 1)
-    :config
-    )
-  );; end of eval-when-compile
+;; Enable Marginalia
+(use-package marginalia
+  :after vertico
+  :ensure t
+  :init
+  (marginalia-mode)
+  :custom
+  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil)))
 
+;; Enable the Ace jump mode
+(use-package ace-jump-mode
+  :ensure t
+  :config
+  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
 
+;; Enable company mode
+(use-package company
+  :ensure t
+  :bind (("C-SPC" . company-search-candidates)
+	 :map company-active-map
+	 ("<backtab>" . company-select-previous)
+	 ("<tab>" . company-select-next)
+	 :map company-search-map
+	 ("<backtab>" . company-select-previous)
+	 ("<tab>" . company-select-next))
+  :init
+  (global-company-mode 1)
+  )
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(evil company company-mode ace-jump-mode marginalia use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(use-package counsel
+  :ensure t
+  :config
+  (global-set-key (kbd "C-s") 'swiper-isearch)
+  (global-set-key (kbd "M-x") 'counsel-M-x)
+  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  (global-set-key (kbd "M-y") 'counsel-yank-pop)
+  (global-set-key (kbd "C-h f") 'counsel-describe-function)
+  (global-set-key (kbd "C-h v") 'counsel-describe-variable)
+  (global-set-key (kbd "C-h l") 'counsel-find-library)
+  (global-set-key (kbd "C-h i") 'counsel-info-lookup-symbol)
+  (global-set-key (kbd "C-h u") 'counsel-unicode-char)
+  (global-set-key (kbd "C-h j") 'counsel-set-variable)
+  (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
+  (global-set-key (kbd "C-c v") 'ivy-push-view)
+  (global-set-key (kbd "C-c V") 'ivy-pop-view)
+  ) ;; end of counsel
