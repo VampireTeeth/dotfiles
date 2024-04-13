@@ -18,24 +18,24 @@
 ;; Enable evil
 (use-package evil
   :ensure t
-  :bind (
-	 :map evil-normal-state-map
-	 ("s" . 'evil-forward-char)
-	 ("t" . 'evil-next-line)
-	 ("n" . 'evil-previous-line)
-	 ("l" . 'evil-search-next)
-	 ("L" . 'evil-search-previous)
-	 ("u" . 'evil-insert)
-	 ("C-u" . 'evil-undo)
-	 ("i" . 'evil-undo)
+  :bind
+  (:map evil-normal-state-map
+   ("s" . 'evil-forward-char)
+   ("t" . 'evil-next-line)
+   ("n" . 'evil-previous-line)
+   ("l" . 'evil-search-next)
+   ("L" . 'evil-search-previous)
+   ("u" . 'evil-insert)
+   ("C-u" . 'evil-undo)
+   ("i" . 'evil-undo)
 
-	 :map evil-visual-state-map
-	 ("s" . 'evil-forward-char)
-	 ("t" . 'evil-next-line)
-	 ("n" . 'evil-previous-line)
-	 ("l" . 'evil-search-next)
-	 ("L" . 'evil-search-previous)
-	 )
+   :map evil-visual-state-map
+   ("s" . 'evil-forward-char)
+   ("t" . 'evil-next-line)
+   ("n" . 'evil-previous-line)
+   ("l" . 'evil-search-next)
+   ("L" . 'evil-search-previous))
+
   :config
   (evil-mode 1)) ;; End evil
 
@@ -54,6 +54,13 @@
   :custom
   (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil)))
 
+(use-package consult
+  :ensure t
+  :bind
+  (("C-c c b" . 'consult-buffer)
+   ("C-c c r" . 'consult-ripgrep)
+   ("C-c c l" . 'consult-line)))
+
 ;; Enable the Ace jump mode
 (use-package ace-jump-mode
   :ensure t
@@ -71,9 +78,9 @@
 	 ("<backtab>" . company-select-previous)
 	 ("<tab>" . company-select-next))
   :init
-  (global-company-mode 1)
-  )
+  (global-company-mode 1))
 
+;; Enable Counsel, Ivy and Swiper
 (use-package counsel
   :ensure t
   :config
@@ -90,4 +97,33 @@
   (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
   (global-set-key (kbd "C-c v") 'ivy-push-view)
   (global-set-key (kbd "C-c V") 'ivy-pop-view)
-  ) ;; end of counsel
+  ) ;; end of counsel, ivy and swiper
+
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
+  :config
+  (load-theme 'sanityinc-tomorrow-eighties))
+
+;; Enable RipGrep
+(use-package rg
+  :ensure t
+  :config
+  (rg-enable-default-bindings)) ;; end of the ripgrep
+
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("04aa1c3ccaee1cc2b93b246c6fbcd597f7e6832a97aaeac7e5891e6863236f9f" "b11edd2e0f97a0a7d5e66a9b82091b44431401ac394478beb44389cf54e6db28" default))
+ '(package-selected-packages
+   '(consult rg color-theme-sanityinc-tomorrow xah-fly-keys vertico use-package marginalia evil counsel company ace-jump-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
