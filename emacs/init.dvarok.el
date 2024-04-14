@@ -99,6 +99,17 @@
   (global-set-key (kbd "C-c V") 'ivy-pop-view)
   ) ;; end of counsel, ivy and swiper
 
+
+;; Enable projectile
+(use-package projectile
+  :ensure t
+  :bind
+  (:map projectile-mode-map
+	("C-c p" . 'projectile-command-map))
+  :config
+  (projectile-mode +1))
+
+;; Enable color-theme-sanityinc-tomorrow
 (use-package color-theme-sanityinc-tomorrow
   :ensure t
   :config
@@ -110,7 +121,11 @@
   :config
   (rg-enable-default-bindings)) ;; end of the ripgrep
 
-
+;; Enable Dimmer
+(use-package dimmer
+  :ensure t
+  :config
+  (dimmer-mode 1))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -120,7 +135,7 @@
  '(custom-safe-themes
    '("04aa1c3ccaee1cc2b93b246c6fbcd597f7e6832a97aaeac7e5891e6863236f9f" "b11edd2e0f97a0a7d5e66a9b82091b44431401ac394478beb44389cf54e6db28" default))
  '(package-selected-packages
-   '(consult rg color-theme-sanityinc-tomorrow xah-fly-keys vertico use-package marginalia evil counsel company ace-jump-mode)))
+   '(projectile dimmer consult rg color-theme-sanityinc-tomorrow xah-fly-keys vertico use-package marginalia evil counsel company ace-jump-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
