@@ -27,7 +27,7 @@
    ("L" . 'evil-search-previous)
    ("u" . 'evil-insert)
    ("C-u" . 'evil-undo)
-   ("i" . 'evil-undo)
+   ("i" . 'evil-insert)
 
    :map evil-visual-state-map
    ("s" . 'evil-forward-char)
@@ -38,6 +38,25 @@
 
   :config
   (evil-mode 1)) ;; End evil
+
+;; Evil-leader
+(use-package evil-leader
+  :after evil
+  :ensure t
+  :init
+  (global-evil-leader-mode)
+  :config
+  (evil-leader/set-leader "<SPC>")
+  (evil-leader/set-key
+    "s s" 'swiper-isearch
+    "f f" 'counsel-find-file
+    "b b" 'ivy-switch-buffer
+    "w w" 'evil-window-next
+    "w s" 'evil-window-split
+    "w v" 'evil-window-vsplit
+    "w o" 'delete-other-windows
+    "w c" 'evil-window-delete
+    "b d" 'kill-buffer))
 
 ;; Enable vertico
 (use-package vertico
@@ -55,9 +74,9 @@
   (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil)))
 
 (use-package consult
-  :ensure t
   :bind
   (("C-c c b" . 'consult-buffer)
+   ("C-c c f" . 'consult-find)
    ("C-c c r" . 'consult-ripgrep)
    ("C-c c l" . 'consult-line)))
 
@@ -135,7 +154,7 @@
  '(custom-safe-themes
    '("04aa1c3ccaee1cc2b93b246c6fbcd597f7e6832a97aaeac7e5891e6863236f9f" "b11edd2e0f97a0a7d5e66a9b82091b44431401ac394478beb44389cf54e6db28" default))
  '(package-selected-packages
-   '(projectile dimmer consult rg color-theme-sanityinc-tomorrow xah-fly-keys vertico use-package marginalia evil counsel company ace-jump-mode)))
+   '(evil-leader projectile dimmer consult rg color-theme-sanityinc-tomorrow xah-fly-keys vertico use-package marginalia evil counsel company ace-jump-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
