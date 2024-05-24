@@ -17,6 +17,7 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
+(setq make-backup-files nil)
 (require 'general-dvorak)
 (require 'rust-lang)
 (custom-set-variables
