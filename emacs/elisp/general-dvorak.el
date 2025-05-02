@@ -41,6 +41,13 @@
     "w c" 'evil-window-delete
     "b d" 'kill-buffer))
 
+(use-package evil-terminal-cursor-changer
+  :after evil
+  :ensure t
+  :config
+  (unless (display-graphic-p)
+    (evil-terminal-cursor-changer-activate)))
+
 ;; Enable vertico
 (use-package vertico
   :ensure t
