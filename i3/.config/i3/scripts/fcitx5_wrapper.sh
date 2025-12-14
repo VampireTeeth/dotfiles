@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-exec /usr/bin/fcitx5.real -d
-
+exec /usr/bin/fcitx5 -d

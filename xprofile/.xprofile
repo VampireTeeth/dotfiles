@@ -1,0 +1,15 @@
+
+# For the fcitx5 to be started correctly
+# sudo vim /usr/share/xsessions/i3.desktop
+# Ensure the Exec line looks exactly like this:
+# Exec=dbus-run-session i3
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export INPUT_METHOD=fcitx
+export LC_CTYPE=en_US.UTF-8 
+
+if ! pgrep -x fcitx5 > /dev/null; then
+    exec fcitx5 -d &
+fi
