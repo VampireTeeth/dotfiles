@@ -1,3 +1,11 @@
+general.import = [
+  # uncomment the flavour you want below:
+  # "~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
 [font]
 size = 20.0
 
@@ -19,3 +27,12 @@ style = "Italic"
 [font.normal]
 family = "MesloLGM Nerd Font"
 style = "Regular"
+
+[window]
+# Use "None" in Linux/i3 to remove the default title bar and borders
+decorations = "None"
+# Opacity value between 0.0 (transparent) and 1.0 (opaque)
+opacity = 0.5 
+# Optional: Add blank space around the terminal content in pixels
+padding = { x = 10, y = 10 } 
+
