@@ -64,6 +64,7 @@
   (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil)))
 
 (use-package consult
+  :ensure t
   :bind
   (("C-c c b" . 'consult-buffer)
    ("C-c c f" . 'consult-find)
