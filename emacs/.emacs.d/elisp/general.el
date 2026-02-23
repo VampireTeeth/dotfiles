@@ -130,6 +130,36 @@
   (dimmer-mode 1))
 
 
+;; General system package utilities
+(defun my/ensure-pkg-config ()
+  "Ensure pkg-config is installed."
+  (unless (executable-find "pkg-config")
+    (cond
+     ((executable-find "brew")   (shell-command "brew install pkg-config"))
+     ((executable-find "pacman") (shell-command "yay -S pkgconf"))
+     ((executable-find "apt")    (shell-command "apt install -y pkg-config"))
+     (t (warn "pkg-config: no supported package manager found")))))
+
+(defun my/libvterm-installed-p ()
+  "Return non-nil if libvterm is installed."
+  (my/ensure-pkg-config)
+  (zerop (call-process "pkg-config" nil nil nil "--exists" "vterm")))
+
+;; Enable vterm
+(use-package vterm
+  :ensure t
+  :init
+  (unless (and (executable-find "cmake")
+               (executable-find "libtool")
+               (my/libvterm-installed-p))
+    (let ((cmd (cond
+                ((executable-find "brew")   "brew install cmake libtool libvterm")
+                ((executable-find "pacman") "yay -S cmake libtool libvterm")
+                ((executable-find "apt")    "apt install -y cmake libtool libtool-bin libvterm-dev"))))
+      (if cmd
+          (shell-command cmd)
+        (warn "vterm: no supported package manager found to install dependencies")))))
+
 ;; Enable AI agent-shell
 (defvar my/ampcode-install-cmd
   (cond
