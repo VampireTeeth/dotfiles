@@ -131,11 +131,20 @@
 
 
 ;; Enable AI agent-shell
+(defvar my/claude-install-cmd
+  (cond
+   ((executable-find "brew")   "brew install claude-code")
+   ((executable-find "pacman") "yay -S claude-code")
+   ((executable-find "apt")    "apt install -y claude-code")))
+
 (use-package agent-shell
     :ensure t
-    :ensure-system-package
-    ;; Add agent installation configs here
-    ((claude . "brew install claude-code")
-     (claude-agent-acp . "npm install -g @zed-industries/claude-agent-acp")))
+    :init
+    (unless (executable-find "claude")
+      (if my/claude-install-cmd
+          (shell-command my/claude-install-cmd)
+        (warn "agent-shell: no supported package manager found to install claude")))
+    (unless (executable-find "claude-agent-acp")
+      (shell-command "npm install -g @zed-industries/claude-agent-acp")))
 
 (provide 'general)
