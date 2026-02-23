@@ -43,6 +43,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("04aa1c3ccaee1cc2b93b246c6fbcd597f7e6832a97aaeac7e5891e6863236f9f" default))
+   '("04aa1c3ccaee1cc2b93b246c6fbcd597f7e6832a97aaeac7e5891e6863236f9f"
+     default))
  '(package-selected-packages
-   '(consult which-key yasnippet vertico rg projectile marginalia lsp-ui lsp-treemacs flycheck evil-terminal-cursor-changer evil-leader dimmer counsel company color-theme-sanityinc-tomorrow ccls ace-jump-mode)))
+   '(ace-jump-mode agent-shell ccls color-theme-sanityinc-tomorrow
+		   company consult counsel dimmer evil-leader
+		   evil-terminal-cursor-changer flycheck lsp-treemacs
+		   lsp-ui projectile rg use-package vertico which-key
+		   yasnippet)))
