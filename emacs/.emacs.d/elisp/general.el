@@ -131,6 +131,12 @@
 
 
 ;; Enable AI agent-shell
+(defvar my/ampcode-install-cmd
+  (cond
+   ((executable-find "brew")   "brew install ampcode")
+   ((executable-find "pacman") "yay -S ampcode")
+   ((executable-find "apt")    "apt install -y ampcode")))
+
 (defvar my/claude-install-cmd
   (cond
    ((executable-find "brew")   "brew install claude-code")
@@ -145,6 +151,28 @@
           (shell-command my/claude-install-cmd)
         (warn "agent-shell: no supported package manager found to install claude")))
     (unless (executable-find "claude-agent-acp")
-      (shell-command "npm install -g @zed-industries/claude-agent-acp")))
+      (shell-command "npm install -g @zed-industries/claude-agent-acp"))
+    (unless (executable-find "amp")
+      (if my/ampcode-install-cmd
+          (shell-command my/ampcode-install-cmd)
+        (warn "agent-shell: no supported package manager found to install ampcode")))
+    (unless (executable-find "acp-amp")
+      (shell-command "npm install -g @superagenticai/acp-amp")))
+
+(defun my/agent-shell-ampcode ()
+  "Interactively open an agent-shell session for Ampcode."
+  (interactive)
+  (agent-shell--dwim
+   :config (agent-shell-make-agent-config
+            :identifier 'ampcode
+            :mode-line-name "Amp"
+            :buffer-name "*Amp-Agent*"
+            :client-maker (lambda (buffer)
+                            (agent-shell--make-acp-client
+                             :command "npx"
+                             :command-params '("-y" "@superagenticai/acp-amp")
+                             :context-buffer buffer))
+            :install-instructions "Install via: npm install -g @superagenticai/acp-amp")
+   :new-shell t))
 
 (provide 'general)
