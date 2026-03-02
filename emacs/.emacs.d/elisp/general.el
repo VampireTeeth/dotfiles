@@ -187,7 +187,9 @@
           (shell-command my/ampcode-install-cmd)
         (warn "agent-shell: no supported package manager found to install ampcode")))
     (unless (executable-find "acp-amp")
-      (shell-command "npm install -g @superagenticai/acp-amp")))
+      (shell-command "npm install -g @superagenticai/acp-amp"))
+    (unless (executable-find "codex-acp")
+      (shell-command "npm install -g @zed-industries/codex-acp")))
 
 (defun my/agent-shell-ampcode ()
   "Interactively open an agent-shell session for Ampcode."
