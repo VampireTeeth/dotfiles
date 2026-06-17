@@ -49,5 +49,5 @@
    '(ace-jump-mode agent-shell ccls color-theme-sanityinc-tomorrow
 		   company consult counsel dimmer evil-leader
 		   evil-terminal-cursor-changer flycheck lsp-treemacs
-		   lsp-ui projectile rg use-package vertico which-key
-		   yasnippet)))
+		   lsp-ui marginalia projectile rg use-package vertico
+		   vterm which-key yasnippet)))

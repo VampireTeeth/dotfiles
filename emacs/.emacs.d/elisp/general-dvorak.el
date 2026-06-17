@@ -54,14 +54,16 @@
   :config
   (vertico-mode t))
 
+;; Marginalia is not working very well in higher version of Emacs
+;; Disabling for now
 ;; Enable Marginalia
-(use-package marginalia
-  :after vertico
-  :ensure t
-  :init
-  (marginalia-mode)
-  :custom
-  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil)))
+;;(use-package after
+;;  :marginalia vertico
+;;  :ensure t
+;;  :init
+;;  (marginalia-mode)
+;;  :custom
+;;  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil)))
 
 (use-package consult
   :ensure t
