@@ -1,26 +1,8 @@
-;; Enable evil
+;; Evil — layout-agnostic core; key remaps live in layout-specific files.
 (use-package evil
   :ensure t
-  :bind
-  (:map evil-normal-state-map
-   ("s" . 'evil-forward-char)
-   ("t" . 'evil-next-line)
-   ("n" . 'evil-previous-line)
-   ("l" . 'evil-search-next)
-   ("L" . 'evil-search-previous)
-   ("u" . 'evil-insert)
-   ("C-u" . 'evil-undo)
-   ("i" . 'evil-insert)
-
-   :map evil-visual-state-map
-   ("s" . 'evil-forward-char)
-   ("t" . 'evil-next-line)
-   ("n" . 'evil-previous-line)
-   ("l" . 'evil-search-next)
-   ("L" . 'evil-search-previous))
-
   :config
-  (evil-mode 1)) ;; End evil
+  (evil-mode 1))
 
 ;; Evil-leader
 (use-package evil-leader
@@ -41,27 +23,55 @@
     "w c" 'evil-window-delete
     "b d" 'kill-buffer))
 
+(use-package evil-terminal-cursor-changer
+  :after evil
+  :ensure t
+  :config
+  (unless (display-graphic-p)
+    (evil-terminal-cursor-changer-activate)))
+
 ;; Enable vertico
 (use-package vertico
   :ensure t
   :config
   (vertico-mode t))
 
-;; Enable Marginalia
-(use-package marginalia
-  :after vertico
-  :ensure t
-  :init
-  (marginalia-mode)
-  :custom
-  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil)))
+;; Marginalia is not working very well in higher version of Emacs — disabled.
+;; (use-package marginalia
+;;   :after vertico
+;;   :ensure t
+;;   :init (marginalia-mode)
+;;   :custom
+;;   (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil)))
 
 (use-package consult
-  :bind
-  (("C-c c b" . 'consult-buffer)
-   ("C-c c f" . 'consult-find)
-   ("C-c c r" . 'consult-ripgrep)
-   ("C-c c l" . 'consult-line)))
+  :ensure t
+  :custom
+  ;; Include dotfiles in ripgrep results; exclude .git/ to avoid flooding.
+  (consult-ripgrep-args
+   (concat "rg --null --line-buffered --color=never --max-columns=1000 --path-separator / "
+           "--smart-case --no-heading --with-filename --line-number --search-zip "
+           "--hidden --glob=!.git/"))
+  :config
+  (defun my/consult-find-dwim ()
+    "Use `consult-fd' when fd is on PATH, else fall back to `consult-find'."
+    (interactive)
+    (if (or (executable-find "fd") (executable-find "fdfind"))
+        (call-interactively #'consult-fd)
+      (call-interactively #'consult-find)))
+
+  (defun my/consult-ripgrep-in-dir ()
+    "Run `consult-ripgrep' but prompt for the search directory."
+    (interactive)
+    (consult-ripgrep '(4)))
+
+  (with-eval-after-load 'evil-leader
+    (evil-leader/set-key
+      "c b" 'consult-buffer
+      "c f" 'my/consult-find-dwim
+      "c r" 'consult-ripgrep
+      "c R" 'my/consult-ripgrep-in-dir
+      "c l" 'consult-line)))
 
 ;; Enable the Ace jump mode
 (use-package ace-jump-mode
@@ -98,9 +108,7 @@
   (global-set-key (kbd "C-h j") 'counsel-set-variable)
   (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
   (global-set-key (kbd "C-c v") 'ivy-push-view)
-  (global-set-key (kbd "C-c V") 'ivy-pop-view)
-  ) ;; end of counsel, ivy and swiper
-
+  (global-set-key (kbd "C-c V") 'ivy-pop-view))
 
 ;; Enable projectile
 (use-package projectile
@@ -121,7 +129,7 @@
 (use-package rg
   :ensure t
   :config
-  (rg-enable-default-bindings)) ;; end of the ripgrep
+  (rg-enable-default-bindings))
 
 ;; Enable Dimmer
 (use-package dimmer
