@@ -13,6 +13,8 @@
   :config
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
+    "SPC" 'counsel-M-x
+    ";"   'eval-expression
     "s s" 'swiper-isearch
     "f f" 'counsel-find-file
     "b b" 'ivy-switch-buffer
@@ -52,6 +54,10 @@
    (concat "rg --null --line-buffered --color=never --max-columns=1000 --path-separator / "
            "--smart-case --no-heading --with-filename --line-number --search-zip "
            "--hidden --glob=!.git/"))
+  ;; Same for fd: descend into dot-directories (e.g. .emacs.d/) but skip .git/.
+  (consult-fd-args
+   '((if (executable-find "fdfind" 'remote) "fdfind" "fd")
+     "--full-path --color=never --hidden --exclude .git"))
   :config
   (defun my/consult-find-dwim ()
     "Use `consult-fd' when fd is on PATH, else fall back to `consult-find'."
