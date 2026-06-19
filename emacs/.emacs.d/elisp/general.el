@@ -143,6 +143,13 @@
   :config
   (dimmer-mode 1))
 
+;; Bridge Emacs kill-ring to the system clipboard in terminal sessions.
+;; xclip dispatches to pbcopy/pbpaste, xclip/xsel, or wl-copy/wl-paste.
+(use-package xclip
+  :ensure t
+  :config
+  (xclip-mode 1))
+
 
 ;; General system package utilities
 (defun my/ensure-pkg-config ()
