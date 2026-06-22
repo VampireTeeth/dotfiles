@@ -228,4 +228,15 @@
             :install-instructions "Install via: npm install -g @superagenticai/acp-amp")
    :new-shell t))
 
+;; Tramp — reuse a single SSH connection for 15 minutes to speed up remote ops.
+(let ((ssh-control-dir (expand-file-name "~/.ssh/control")))
+  (make-directory ssh-control-dir t)
+  (use-package tramp
+    :ensure nil
+    :defer t
+    :custom
+    (tramp-ssh-controlmaster-options
+     (concat "-o ControlMaster=auto -o ControlPersist=15m"
+             " -o ControlPath=" ssh-control-dir "/ssh-%C"))))
+
 (provide 'general)
