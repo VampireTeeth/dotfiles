@@ -5,8 +5,8 @@
 ;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
 ;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
 ;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
-;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
-;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ╚═╝
+;   ██║      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 ;
 ;
 ;   To learn more about how to configure Polybar
@@ -49,7 +49,7 @@ module-margin = 1
 separator = |
 separator-foreground = ${colors.disabled}
 
-font-0 = MesloLGM Nerd Font:size=15;10
+font-0 = MesloLGM Nerd Font:size=20;10
 
 modules-left = xworkspaces xwindow
 modules-right = filesystem pulseaudio bluetooth ime-status xkeyboard memory cpu wlan eth date
@@ -101,7 +101,6 @@ label-empty-padding = 1
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:60:...%
-label-maxlen = 50
 
 [module/filesystem]
 type = internal/fs
