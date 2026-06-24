@@ -10,7 +10,3 @@ export XMODIFIERS=@im=fcitx
 export INPUT_METHOD=fcitx
 export LC_CTYPE=en_AU.UTF-8 
 export WINIT_UNIX_BACKEND=x11
- 
-if ! pgrep -x fcitx5 > /dev/null; then
-    fcitx5 -d
-fi
