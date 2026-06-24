@@ -14,7 +14,7 @@ set $mod Mod4
 
 # Wallpaper
 # Set background wallpaper using feh
-exec --no-startup-id feh --bg-scale $HOME/Pictures/my-fancy-i3-wallpaper.png
+# exec --no-startup-id feh --bg-scale $HOME/Pictures/my-fancy-i3-wallpaper.png
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.

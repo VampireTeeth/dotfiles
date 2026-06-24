@@ -8,8 +8,9 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export INPUT_METHOD=fcitx
-export LC_CTYPE=en_US.UTF-8 
-
+export LC_CTYPE=en_AU.UTF-8 
+export WINIT_UNIX_BACKEND=x11
+ 
 if ! pgrep -x fcitx5 > /dev/null; then
-    exec fcitx5 -d &
+    fcitx5 -d
 fi
