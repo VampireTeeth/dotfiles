@@ -28,5 +28,5 @@ export PATH="$HOME/.local/bin:$PATH"
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
 
-# Set up zoxide (cd replacement)
+# Set up zoxide (cd alternative)
 eval "$(zoxide init bash)"
