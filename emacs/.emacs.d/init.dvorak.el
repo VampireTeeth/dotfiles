@@ -20,7 +20,8 @@
 (setq make-backup-files nil)
 (require 'general-dvorak)
 ;;(require 'rust-lang)
-(require 'cpp-lang)
+;;(require 'cpp-lang)
+(require 'python-lang)
 ;;(custom-set-variables
 ;; ;; custom-set-variables was added by Custom.
 ;; ;; If you edit it by hand, you could mess it up, so be careful.
@@ -45,9 +46,5 @@
  '(custom-safe-themes
    '("04aa1c3ccaee1cc2b93b246c6fbcd597f7e6832a97aaeac7e5891e6863236f9f"
      default))
- '(package-selected-packages
-   '(ace-jump-mode agent-shell ccls color-theme-sanityinc-tomorrow
-		   company consult counsel dimmer evil-leader
-		   evil-terminal-cursor-changer flycheck lsp-treemacs
-		   lsp-ui marginalia projectile rg use-package vertico
-		   vterm which-key yasnippet)))
+ '(package-selected-packages nil)
+ '(warning-suppress-log-types '((use-package))))

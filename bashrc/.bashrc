@@ -29,9 +29,15 @@ export NVM_DIR="$HOME/.nvm"
 
 # Ensure ~/.local/bin is on PATH
 path_add "$HOME/.local/bin"
+# Ensure Cross-compiler GCC is on PATH
+path_add "$HOME/opt/cross/bin"
+
+# Set up starship
+eval -- "$(/usr/sbin/starship init bash --print-full-init)"
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
 
 # Set up zoxide (cd alternative)
 eval "$(zoxide init bash)"
+. "$HOME/.cargo/env"
