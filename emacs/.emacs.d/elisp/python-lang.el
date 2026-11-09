@@ -1,9 +1,6 @@
 ;; -*- lexical-binding: t; -*-
-(use-package elpy
-  :after evil-leader
-  :ensure t
-  :init
-  (elpy-enable))
-
+(use-package eglot
+  :ensure nil
+  :hook (python-mode . eglot-ensure))   
    
 (provide 'python-lang)
